@@ -1,0 +1,66 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <style>
+    /* Define your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="submit"] {
+      display: block;
+      margin-bottom: 15px;
+      padding: 12px;
+      width: calc(100% - 24px);
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+  <h1>USERS</h1>
+  <p>Welcome to USERS</p>
+  <div>
+    <form action="/Userforms/createUser" method="POST">
+      <input type="text" id="username" name="username" placeholder="Add a username" />
+      <input type="password" id="password" name="password" placeholder="Add a password" />
+      <input type="date" id="birthday" name="birthday" placeholder="Add a birthday" />
+      <input type="submit" name="submitUser" value="Save" />
+    </form>
+    <h2>form list</h2>
+    <hr>
+    {% for user in users %}
+      <p><b>Username : </b>{{ user.username }}</p>
+      <p><b>Password : </b>{{ user.password }}</p>
+      <p><b>Birthday : </b>{{ user.birthday }}</p>
+      <a href="/Userforms/updateUser/{{ user.id }}">update</a>
+      <a href="/Userforms/deleteUser/{{ user.id }}">delete</a>
+      <hr>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <style>
+    /* Define your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="submit"] {
+      display: block;
+      margin-bottom: 15px;
+      padding: 12px;
+      width: calc(100% - 24px);
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+  <h1>USER</h1>
+  <p>Welcome to the user update form</p>
+  <div>
+    <form action="/Userforms/updateUser/{{ user.id }}" method="POST">
+      <input type="text" id="username" name="username" placeholder="Add a username" value="{{ user.username }}" />
+      <input type="password" id="password" name="password" placeholder="Add a password" value="{{ user.password }}" />
+      <input type="date" id="birthday" name="birthday" placeholder="Add a birthday" value="{{ user.birthday }}" />
+      <input type="submit" value="Save" />
+    </form>
+  </div>
+{% endblock %}
